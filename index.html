@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Günlük Gelir Gider Defteri</title>
+    <style>
+        /* PDF Çıktısına uygun temel stiller */
+        body { font-family: Arial, sans-serif; margin: 15px; font-size: 9pt; }
+        .defter-tablo { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .defter-tablo th, .defter-tablo td {
+            border: 1px solid #000;
+            padding: 4px 5px;
+            text-align: left;
+            height: 24px; /* Elle yazmaya uygun satır yüksekliği */
+        }
+        .defter-tablo th {
+            background-color: #f2f2f2;
+            text-align: center;
+            font-weight: bold;
+            font-size: 9pt;
+        }
+        .header-row td { border: none !important; padding: 0; }
+        .main-title { text-align: center; font-size: 12pt; margin-bottom: 8px; }
+        .toplam-row th, .toplam-row td { font-weight: bold; background-color: #e6e6e6; }
+        
+        /* Alt Özet ve İmza Alanları */
+        .alt-bilgiler {
+            width: 100%;
+            margin-top: 10px;
+            border-collapse: collapse;
+        }
+        .alt-bilgiler td {
+            padding: 5px;
+            vertical-align: top;
+            font-size: 8pt;
+        }
+        .kullanim-notu {
+            width: 28%;
+            text-align: left;
+        }
+        .bakiye-alani {
+            width: 32%;
+        }
+        .bakiye-alani table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .bakiye-alani td {
+            border: 1px solid #000;
+            padding: 5px 8px;
+            height: 22px;
+        }
+        .bakiye-alani td:first-child {
+            width: 55%;
+        }
+        .bakiye-alani td:last-child {
+            width: 45%;
+            background-color: #fff;
+        }
+        .imza-alani {
+            width: 20%;
+            text-align: center;
+        }
+        .imza-kutusu {
+            border: 1px solid #000;
+            height: 30px;
+            margin-top: 5px;
+        }
+        
+        /* Yazdırma için özel stiller */
+        @media print {
+            @page {
+                size: A4;
+                margin: 10mm;
+            }
+            body {
+                margin: 0;
+                font-size: 8pt;
+            }
+            .defter-tablo th, .defter-tablo td {
+                height: 22px;
+                padding: 3px 4px;
+            }
+            .main-title {
+                font-size: 11pt;
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-title">GÜNLÜK KASA/CARİ HESAP DEFTERİ</div>
+
+<table class="defter-tablo">
+    <tr>
+        <td colspan="3" style="border: none; padding-left: 0;"><strong>İşletme Adı:</strong> SE & FE Garaj</td>
+        <td colspan="2" style="border: none;"><strong>Tarih:</strong></td>
+        <td colspan="2" style="border: none;"><strong>Sayfa No:</strong> [___]</td>
+    </tr>
+
+    <tr class="header-row">
+        <th style="width: 6%;">SIRA NO</th>
+        <th style="width: 10%;">ÖDEME ŞEKLİ</th>
+        <th style="width: 14%;">Harcama Yapan</th>
+        <th style="width: 30%;">AÇIKLAMA (Ne İçin Geldi/Gitti?)</th>
+        <th style="width: 13%;">GELİR</th>
+        <th style="width: 13%;">GİDER</th>
+        <th style="width: 14%;">BAKİYE (₺)</th>
+    </tr>
+
+    <tr><td style="text-align: center;">1</td><td></td><td></td><td>Önceki Günden Devir</td><td></td><td></td><td></td></tr>
+    <tr><td style="text-align: center;">2</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td style="text-align: center;">3</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td style="text-align: center;">4</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td style="text-align: center;">5</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td style="text-align: center;">6</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td style="text-align: center;">7</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td style="text-align: center;">8</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td style="text-align: center;">9</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td style="text-align: center;">10</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td style="text-align: center;">11</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td style="text-align: center;">12</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td style="text-align: center;">13</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td style="text-align: center;">14</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td style="text-align: center;">15</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td style="text-align: center;">16</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td style="text-align: center;">17</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td style="text-align: center;">18</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td style="text-align: center;">19</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td style="text-align: center;">20</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td style="text-align: center;">21</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td style="text-align: center;">22</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td style="text-align: center;">23</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td style="text-align: center;">24</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td style="text-align: center;">25</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    
+    <tr class="toplam-row">
+        <td colspan="4" style="text-align: right;"><strong>GÜN İÇİ TOPLAM</strong></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+
+<!-- Alt Bilgi Alanları - Ayrı Tablo -->
+<table class="alt-bilgiler">
+    <tr>
+        <td class="kullanim-notu">
+            <strong>KULLANIM NOTU:</strong><br>
+            Gelir: Kasaya giren,<br>
+            Gider: Kasadan çıkan tutardır.
+        </td>
+        <td class="bakiye-alani">
+            <table>
+                <tr>
+                    <td style="font-weight: bold;">GÜN BAŞI BAKİYESİ</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold;">(+) GÜN İÇİ NET GİRİŞ</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold;">(-) GÜN İÇİ NET ÇIKIŞ</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold;">(=) GÜN SONU BAKİYE</td>
+                    <td></td>
+                </tr>
+            </table>
+        </td>
+        <td class="imza-alani">
+            <strong>HAZIRLAYAN</strong>
+            <div class="imza-kutusu"></div>
+            <div style="margin-top: 3px;">Ad Soyad</div>
+        </td>
+        <td class="imza-alani">
+            <strong>ONAYLAYAN</strong>
+            <div class="imza-kutusu"></div>
+            <div style="margin-top: 3px;">Ad Soyad</div>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
